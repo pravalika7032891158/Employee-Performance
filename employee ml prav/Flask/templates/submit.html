@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Prediction Using ML</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #00bfff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #00a1d4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+        .prediction-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .result-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .result-category {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .result-prediction {
+            font-size: 28px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .result-message {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .graph-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .graph {
+            margin: 20px;
+        }
+        img {
+            max-width: 400px;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <span style="color: white; font-size: 22px;">Employee Performance Prediction Using ML</span>
+        <div>
+            <a href="./">Home</a>
+            <a href="./about">About</a>
+            <a href="./predict">Predict</a>
+        </div>
+    </nav>
+
+    <!-- Content Wrapper -->
+    <div class="container">
+        <!-- Result Display Box -->
+        <div class="result-box">
+            <div class="result-category">{{ category }}</div>
+            <div class="result-prediction">Prediction Score: {{ prediction_value }}</div>
+            <div class="result-message">{{ prediction_text }}</div>
+        </div>
+        
+        <!-- Graphs Section -->
+        <h2 style="text-align: center; color: #333;">Performance Analysis Graphs</h2>
+        <div class="graph-container">
+            {% for graph in graphs %}
+            <div class="graph">
+                <img src="data:image/png;base64,{{ graph }}" alt="Graph">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>
